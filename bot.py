@@ -2,6 +2,10 @@ import discord
 import random 
 from discord.ext import commands 
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 import basico_nlp as m_nlp
 import nltk
 nltk.download('stopwords')
@@ -47,5 +51,6 @@ async def pergunta(ctx, *, input_message ):
     r = m_nlp.encontra_pergunta(2,input_message,pStemmer,Xload,pt_stopwords, base_dados, countV  )
     print(r) 
     await ctx.send(r)  
+token = os.environ.get('TOKEN') 
 
-client.run('Nzg5MjE4NzE1MzEyMDYyNTA4.X9u3NA.4V87Q2ouz5zIA4OhwqLPb_7SQm0')
+client.run( token )
